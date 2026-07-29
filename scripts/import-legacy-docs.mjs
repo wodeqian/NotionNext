@@ -136,7 +136,7 @@ function escapeText(text) {
 }
 
 function escapeLinkLabel(text) {
-  return text.replace(/\[/g, '\\[').replace(/\]/g, '\\]')
+  return text.replace(/\\/g, '\\\\').replace(/\[/g, '\\[').replace(/\]/g, '\\]')
 }
 
 function escapeImageAlt(text) {
