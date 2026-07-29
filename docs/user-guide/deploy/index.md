@@ -19,8 +19,9 @@
 | [vercel-redeploy.md](./vercel-redeploy.md) | 重新部署 |
 | [netlify.md](./netlify.md) | Netlify（4.0.9+） |
 | [cloudflare-pages.md](./cloudflare-pages.md) | Cloudflare 静态 |
+| [edgeone-pages.md](./edgeone-pages.md) | **腾讯云 EdgeOne**（Node 版本、ENOSPC、Next SSG 预设） |
 | [build-tuning.md](./build-tuning.md) | **构建超时 / Notion 预热与限流**（环境变量） |
-| [vps.md](./vps.md) | VPS / Docker（Node 20+） |
+| [vps.md](./vps.md) | VPS / Docker（Node 22+） |
 
 ## 构建超时排错
 
@@ -28,10 +29,10 @@
 
 ## 环境要求（2026）
 
-- **Node.js 20**（见 `.nvmrc`）
+- **Node.js 22**（见 `.nvmrc` / `.node-version`）。Node 20 已无法安装当前依赖，Cloudflare、Netlify、VPS、Docker 等构建环境都应同步使用 Node 22。
 - **Yarn**：`yarn` → `yarn build` / `yarn export`
 - 必配：`NOTION_PAGE_ID`
 
-## EdgeOne / 构建缓存
+## EdgeOne
 
-构建时若 `.next/cache` 不可写，项目会回退系统临时目录（Netlify 等）。见上游 PR #4046 与 `lib/cache/build_session.js`。
+Node 版本、磁盘 `ENOSPC`、框架预设 **Next SSG** 等见 **[edgeone-pages.md](./edgeone-pages.md)**。构建时若 `.next/cache` 不可写，项目会回退系统临时目录，见 `lib/cache/build_session.js`。
